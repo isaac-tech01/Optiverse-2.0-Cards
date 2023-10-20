@@ -7,6 +7,7 @@ import RequestCardScreen from '../screens/RequestCardScreen'
 import ActivateCardScreen from '../screens/ActivateCardScreen'
 import SupportCardScreen from '../screens/SupportCardScreen'
 import OptionCardScreen from '../screens/OptionCardScreen'
+import ChangePinScreen from '../screens/ChangePinScreen'
 
 
 const Stack = createNativeStackNavigator()
@@ -18,6 +19,7 @@ const AppNavigation = () => {
             <Stack.Screen name='Card' component={CardsScreen}/>
             <Stack.Screen name='Request' component={RequestCardScreen}/>
             <Stack.Screen name='Activate' component={ActivateCardScreen}/>
+            <Stack.Screen name='Change' component={ChangePinScreen}/>
             <Stack.Screen name='Support' component={SupportCardScreen}/>
             <Stack.Screen name='Option' component={OptionCardScreen}/>
         </Stack.Navigator>

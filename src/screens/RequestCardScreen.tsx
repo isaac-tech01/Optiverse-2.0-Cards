@@ -17,6 +17,7 @@ import DeliveryComponent from "../components/delivery";
 import { nigeriaStates } from "../constants/nigeria-states";
 import { localGovernments } from "../constants/local-government";
 import StateModal from "../components/stateModal";
+import LGAModal from "../components/lgaModal";
 
 const RequestCardScreen = () => {
   const navigation = useNavigation();
@@ -127,17 +128,27 @@ const RequestCardScreen = () => {
   const hideStateModal = () => {
     setStateModalVisible(false);
   };
-  const handleStateSelect = (state: any) => {
-    setSelectedState(state);
+  const handleStateSelect = (selectedState: React.SetStateAction<string>) => {
+    console.log(selectedState);
+    //console.log("localGovernments:", selectedLga);
+    setSelectedState(selectedState); // Update the selected state
+    //setLgaModalVisible(true);
     hideStateModal();
   };
 
   const [isLgaModalVisible, setLgaModalVisible] = useState(false);
+  const [selectedLga, setSelectedLga] = useState("");
   const showLgaModal = () => {
     setLgaModalVisible(true);
   };
+
   const hideLgaModal = () => {
     setLgaModalVisible(false);
+  };
+  const handleLgaSelect = (selectedLga: React.SetStateAction<string>) => {
+    console.log(selectedLga);
+    setSelectedLga(selectedLga);
+    hideLgaModal();
   };
 
   const [selectedOption, setSelectedOption] = useState("Branch Pick-up");
@@ -308,10 +319,11 @@ const RequestCardScreen = () => {
             {!isBranchPickupActive && (
               <View style={{ marginBottom: 24 }}>
                 <Text
-                  className="mb-2 text-xs text-left"
+                  className="mt-1 mb-2 text-xs text-right"
                   style={{ color: "#000A1F" }}
                 >
-                  Identity would be verified delivery
+                  Identity will be verified on delivery.{"\n"}
+                  Ensure you have a valid means of identification
                 </Text>
                 <View className="flex-col">
                   {/* House Number */}
@@ -324,7 +336,7 @@ const RequestCardScreen = () => {
                       style={containerStyle}
                     >
                       <TextInput
-                        className="text-base text-center"
+                        className="text-sm text-center space-y-1"
                         placeholder="Enter your house number"
                       />
                     </View>
@@ -340,7 +352,7 @@ const RequestCardScreen = () => {
                       style={containerStyle}
                     >
                       <TextInput
-                        className="text-base text-center"
+                        className="text-sm text-center"
                         placeholder="Enter your street name"
                       />
                     </View>
@@ -365,15 +377,15 @@ const RequestCardScreen = () => {
                   </View>
 
                   {/* LGA */}
-                  <View>
+                  <View className="mb-6">
                     <Text className="text-base font-semibold mb-1">LGA</Text>
                     <View>
                       <TouchableOpacity
                         className="flex-row justify-between items-center"
-                        onPress={showStateModal}
+                        onPress={showLgaModal}
                         style={containerStyle}
                       >
-                        <Text>{selectedState || "Select LGA"}</Text>
+                        <Text>{selectedLga || "Select LGA"}</Text>
                         <SvgUri
                           width="30"
                           height="30"
@@ -381,6 +393,16 @@ const RequestCardScreen = () => {
                         />
                       </TouchableOpacity>
                     </View>
+                  </View>
+
+                  <View className="mb-6 flex-row justify-between items-center">
+                    <Text style={{color: "#999999"}} className="text-xs">Delivery Fee</Text>
+                    <Text className="text-xs">0</Text>
+                  </View>
+
+                  <View className="flex-row justify-between items-center">
+                    <Text style={{color: "#999999"}} className="text-xs">VAT</Text>
+                    <Text className="text-xs">0</Text>
                   </View>
                 </View>
               </View>
@@ -420,6 +442,16 @@ const RequestCardScreen = () => {
             hideModal={hideStateModal}
             onSelect={handleStateSelect}
             states={nigeriaStates}
+          />
+
+          {/* Show the LGA selection modal */}
+          <LGAModal
+            visible={isLgaModalVisible}
+            hideModal={hideLgaModal}
+            lgas={localGovernments}
+            onSelect={handleLgaSelect}
+            selectedState={selectedState} // Pass the selected state
+            selectedLga={selectedLga} // Pass the selected LGA
           />
         </ScrollView>
       </PaperProvider>

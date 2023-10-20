@@ -9,7 +9,7 @@ import NumberKeypad from "../components/keypad";
 import { useNavigation } from "@react-navigation/native";
 import SvgUri from "react-native-svg-uri";
 
-const ActivateCardScreen = () => {
+const ChangePinScreen = () => {
   const navigation = useNavigation();
   const [pinDigits, setPinDigits] = useState(["", "", "", ""]); // State to store entered pin digits
   const [currentView, setCurrentView] = useState(0);
@@ -124,7 +124,7 @@ const ActivateCardScreen = () => {
           <ChevronLeftIcon size={30} strokeWidth={4} color={"#000A1F"} />
         </TouchableOpacity>
         <Text style={{ marginLeft: 16, fontSize: 20, fontWeight: "bold" }}>
-          Activate Card
+          Change Pin
         </Text>
       </View>
 
@@ -146,7 +146,7 @@ const ActivateCardScreen = () => {
                 style={{ color: "#000A1F" }}
                 className="text-center text-base font-semibold"
               >
-                Enter New Card Pin
+                Enter Old Pin
               </Text>
               {/* Display Pin Digits */}
               <View style={{ flexDirection: "row", justifyContent: "center" }}>
@@ -169,7 +169,7 @@ const ActivateCardScreen = () => {
                 style={{ color: "#000A1F" }}
                 className="text-center text-base font-semibold"
               >
-                Confirm New Card Pin
+                Enter New Pin
               </Text>
               {/* Display Pin Digits */}
               <View style={{ flexDirection: "row", justifyContent: "center" }}>
@@ -192,7 +192,7 @@ const ActivateCardScreen = () => {
                 style={{ color: "#000A1F" }}
                 className="text-center text-base font-semibold"
               >
-                Enter Transaction Pin
+                Confirm New Pin
               </Text>
               {/* Display Pin Digits */}
               <View style={{ flexDirection: "row", justifyContent: "center" }}>
@@ -219,4 +219,4 @@ const ActivateCardScreen = () => {
   );
 };
 
-export default ActivateCardScreen;
+export default ChangePinScreen;

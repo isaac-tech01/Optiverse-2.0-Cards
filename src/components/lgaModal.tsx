@@ -1,25 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, FlatList } from "react-native";
 import { List, Button, Dialog, Portal, Modal } from "react-native-paper";
 
-interface StateSelectionModalProps {
+interface LGAModalProps {
   visible: boolean;
   hideModal: () => void;
-  onSelect: (state: string) => void;
-  states: { value: string; name: string }[];
+  onSelect: any;
+  selectedState: string; // The selected state name
+  selectedLga: string; // The selected state name
+  lgas: { [key: string]: string[] }; // Object with states as keys and arrays of LGAs as values
 }
 
-const StateModal: React.FC<StateSelectionModalProps> = ({
+const LGAModal: React.FC<LGAModalProps> = ({
   visible,
   hideModal,
+  lgas,
   onSelect,
-  states,
+  selectedState,
 }) => {
+  const [selectedLga, setSelectedLga] = useState<string>("");
   const containerStyle = {
     backgroundColor: "#fff",
     padding: 14,
     borderRadius: 10,
   };
+
+  // Filter LGAs based on the selected state
+  const filteredLGAs = selectedState ? lgas[selectedState] || [] : [];
+  //const filteredLGAs = lgas[selectedState] || [];
+
   return (
     <Portal>
       <Modal
@@ -28,17 +37,17 @@ const StateModal: React.FC<StateSelectionModalProps> = ({
         onDismiss={hideModal}
         contentContainerStyle={containerStyle}
       >
-        <Dialog.Title>Select a State</Dialog.Title>
+        <Dialog.Title>Select a Local Government Area</Dialog.Title>
         <Dialog.ScrollArea style={{ maxHeight: 250, paddingHorizontal: 0 }}>
           <FlatList
-            data={states}
-            keyExtractor={(item) => item.value}
+            data={filteredLGAs}
+            keyExtractor={(item) => item}
             renderItem={({ item }) => (
               <List.Item
-                title={item.name}
+                title={item}
                 onPress={() => {
-                  onSelect(item.name);
-                  hideModal();
+                  onSelect(item); // Notify the parent component about the selected LGA
+                  hideModal(); // Close the modal
                 }}
               />
             )}
@@ -52,4 +61,4 @@ const StateModal: React.FC<StateSelectionModalProps> = ({
   );
 };
 
-export default StateModal;
+export default LGAModal;

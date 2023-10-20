@@ -32,8 +32,11 @@ const CardsScreen: React.FC = () => {
   const activate = () => {
     navigation.navigate("Activate");
   };
+  const change = () => {
+    navigation.navigate("Change");
+  };
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1" style={{ backgroundColor: "#E6EBF5" }}>
       <View className={"flex-1" + topMargin}>
         {/* Top Bar */}
         <View
@@ -125,7 +128,10 @@ const CardsScreen: React.FC = () => {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-row items-center mx-10 mb-5">
+          <TouchableOpacity
+            className="flex-row items-center mx-10 mb-5"
+            onPress={change}
+          >
             {/* <ArrowPathIcon size={30} strokeWidth={2} color={"#003399"} /> */}
             <SvgUri
               width="30"

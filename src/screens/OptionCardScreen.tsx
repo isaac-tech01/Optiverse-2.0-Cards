@@ -72,7 +72,7 @@ const OptionsCardScreen = () => {
     <SafeAreaView className="flex-1" style={{ backgroundColor: "#e6ebf5" }}>
       {/* Top Bar*/}
       <View className="my-2 mx-4 mb-4 flex-row items-center">
-        <TouchableOpacity onPress={() => navigation.goBack}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <ChevronLeftIcon size={30} strokeWidth={4} color={"#000A1F"} />
         </TouchableOpacity>
         <Text className="ml-4 text-2xl font-bold">Card Options</Text>
