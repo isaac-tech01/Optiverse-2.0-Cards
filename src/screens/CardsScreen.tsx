@@ -5,7 +5,7 @@ import {
   ScrollView,
   Platform,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import {
   AdjustmentsHorizontalIcon,
   ChevronLeftIcon,
@@ -15,11 +15,21 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import CardComponent from "../components/card";
 import SvgUri from "react-native-svg-uri";
+import Eye from "../../assets/icons/eye.svg";
+import Eyee from "../../assets/icons/eyee.svg";
+import Lock from "../../assets/icons/lock.svg";
+import Lockk from "../../assets/icons/lockk.svg";
+import Option from "../../assets/icons/options.svg";
+import Card from "../../assets/icons/card.svg";
+import Activate from "../../assets/icons/activate.svg";
+import Change from "../../assets/icons/change.svg";
+import Support from "../../assets/icons/support.svg";
 import {
   useNavigation,
   NavigationProp,
   ParamListBase,
 } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 
 const ios = Platform.OS === "ios";
 const topMargin = ios ? "mt-4" : "mt-10";
@@ -35,8 +45,27 @@ const CardsScreen: React.FC = () => {
   const change = () => {
     navigation.navigate("Change");
   };
+  const [showDetails, setShowDetails] = useState(false);
+  const [showCard, setShowCard] = useState(false);
+  const [see, setSee] = useState("see");
+  const [lock, setLock] = useState("lock");
+
+  const toggleShowDetails = () => {
+    setShowDetails(!showDetails);
+    // Toggle between two different icon names
+    const newIconName = see === "eye" ? "anotherIcon" : "eye";
+    setSee(newIconName);
+  };
+
+  const lockCard = () => {
+    setShowCard(!showCard);
+
+    const Lockk = lock === "lock" ? "anotherIcon" : "lock";
+    setLock(Lockk);
+  };
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: "#E6EBF5" }}>
+      <StatusBar style="dark" />
       <View className={"flex-1" + topMargin}>
         {/* Top Bar */}
         <View
@@ -53,28 +82,28 @@ const CardsScreen: React.FC = () => {
         </View>
 
         {/* Card Carousel */}
-        <CardComponent />
+        <CardComponent showDetails={showDetails} showCard={showCard} />
 
         {/* Card Icons */}
         <View className="flex-row justify-between items-center mx-10 mb-8">
           <View className="flex-col items-center">
-            <TouchableOpacity className="mb-2">
-              <SvgUri
-                width="70"
-                height="70"
-                source={require("../../assets/icons/eye.svg")}
-              />
+            <TouchableOpacity disabled={showCard} onPress={toggleShowDetails} className="mb-2">
+              {see === "eye" ? (
+                <Eyee width={70} height={70} />
+              ) : (
+                <Eye width={70} height={70} />
+              )}
             </TouchableOpacity>
             <Text>Show Details</Text>
           </View>
 
           <View className="flex-col items-center">
-            <TouchableOpacity className="mb-2">
-              <SvgUri
-                width="70"
-                height="70"
-                source={require("../../assets/icons/lock.svg")}
-              />
+            <TouchableOpacity onPress={lockCard} className="mb-2">
+              {lock === "lock" ? (
+                <Lock width={70} height={70} />
+              ) : (
+                <Lockk width={70} height={70} />
+              )}
             </TouchableOpacity>
             <Text>Lock</Text>
           </View>
@@ -84,11 +113,7 @@ const CardsScreen: React.FC = () => {
               className="mb-2"
               onPress={() => navigation.navigate("Option")}
             >
-              <SvgUri
-                width="70"
-                height="70"
-                source={require("../../assets/icons/options.svg")}
-              />
+              <Option width={70} height={70} />
             </TouchableOpacity>
             <Text>Options</Text>
           </View>
@@ -100,12 +125,7 @@ const CardsScreen: React.FC = () => {
             className="flex-row items-center mx-10 mb-5"
             onPress={request}
           >
-            {/* <CreditCardIcon size={30} strokeWidth={2} color={"#003399"}/> */}
-            <SvgUri
-              width="30"
-              height="30"
-              source={require("../../assets/icons/card.svg")}
-            />
+            <Card width={30} height={30} />
             <View className="flex-col ml-4">
               <Text className="text-lg font-bold">Request New Card</Text>
               <Text>Pick up or get a new card delivered to you!</Text>
@@ -116,12 +136,7 @@ const CardsScreen: React.FC = () => {
             className="flex-row items-center mx-10 mb-5"
             onPress={activate}
           >
-            {/* <Cog8ToothIcon size={30} strokeWidth={2} color={"#003399"} /> */}
-            <SvgUri
-              width="30"
-              height="30"
-              source={require("../../assets/icons/card.svg")}
-            />
+            <Activate width={30} height={30} />
             <View className="flex-col ml-4">
               <Text className="text-lg font-bold">Activate Card</Text>
               <Text>Ready to start using your new card? click here</Text>
@@ -132,12 +147,7 @@ const CardsScreen: React.FC = () => {
             className="flex-row items-center mx-10 mb-5"
             onPress={change}
           >
-            {/* <ArrowPathIcon size={30} strokeWidth={2} color={"#003399"} /> */}
-            <SvgUri
-              width="30"
-              height="30"
-              source={require("../../assets/icons/change.svg")}
-            />
+            <Change width={30} height={30} />
             <View className="flex-col ml-4">
               <Text className="text-lg font-bold">Change Pin</Text>
               <Text>Change your pin in simple steps!</Text>
@@ -148,12 +158,7 @@ const CardsScreen: React.FC = () => {
             className="flex-row items-center mx-10 mb-5"
             onPress={() => navigation.navigate("Support")}
           >
-            {/* <PhoneIcon size={30} strokeWidth={2} color={"#003399"} /> */}
-            <SvgUri
-              width="30"
-              height="30"
-              source={require("../../assets/icons/support.svg")}
-            />
+            <Support width={30} height={30} />
             <View className="flex-col ml-4">
               <Text className="text-lg font-bold">Support</Text>
               <Text>Report a card issue</Text>

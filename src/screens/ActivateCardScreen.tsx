@@ -8,6 +8,7 @@ import {
 import NumberKeypad from "../components/keypad";
 import { useNavigation } from "@react-navigation/native";
 import SvgUri from "react-native-svg-uri";
+import Verve from "../../assets/icons/verve.svg"
 
 const ActivateCardScreen = () => {
   const navigation = useNavigation();
@@ -61,56 +62,97 @@ const ActivateCardScreen = () => {
   //   }
   // };
 
-  const handleKeyPress = (digit: number) => {
-    // Check if the current view is within the valid range (0 to 2)
+  // const handleKeyPress = (digit: number) => {
+  //   // Check if the current view is within the valid range (0 to 2)
+  //   if (currentView >= 0 && currentView <= 2) {
+  //     // Calculate the starting index for the current view
+  //     const startIndex = currentView * 4;
+
+  //     if (pinDigits[startIndex + 3] === "") {
+  //       // If the last slot in the current view is empty, allow input
+  //       const updatedPinDigits = [...pinDigits];
+  //       for (let i = startIndex; i < startIndex + 4; i++) {
+  //         if (updatedPinDigits[i] === "") {
+  //           updatedPinDigits[i] = digit.toString();
+  //           break;
+  //         }
+  //       }
+  //       setPinDigits(updatedPinDigits);
+
+  //       // Check if all digits in the current view are entered
+  //       const isViewCompleted = updatedPinDigits
+  //         .slice(startIndex, startIndex + 4)
+  //         .every((d) => d !== "");
+
+  //       if (isViewCompleted) {
+  //         // Move to the next view
+  //         if (currentView < 2) {
+  //           setCurrentView(currentView + 1);
+
+  //           // Clear input for the current view
+  //           for (let i = startIndex; i < startIndex + 4; i++) {
+  //             updatedPinDigits[i] = "";
+  //           }
+  //           setPinDigits(updatedPinDigits);
+  //         }
+  //       }
+  //     }
+  //   }
+  // };
+
+  const handleKeyPress = (digit: string) => {
     if (currentView >= 0 && currentView <= 2) {
-      // Calculate the starting index for the current view
+      const updatedPinDigits = [...pinDigits];
       const startIndex = currentView * 4;
-
-      if (pinDigits[startIndex + 3] === "") {
-        // If the last slot in the current view is empty, allow input
-        const updatedPinDigits = [...pinDigits];
-        for (let i = startIndex; i < startIndex + 4; i++) {
-          if (updatedPinDigits[i] === "") {
-            updatedPinDigits[i] = digit.toString();
-            break;
-          }
+      
+      for (let i = startIndex; i < startIndex + 4; i++) {
+        if (updatedPinDigits[i] === "") {
+          updatedPinDigits[i] = digit;
+          break;
         }
-        setPinDigits(updatedPinDigits);
+      }
 
-        // Check if all digits in the current view are entered
-        const isViewCompleted = updatedPinDigits
-          .slice(startIndex, startIndex + 4)
-          .every((d) => d !== "");
+      setPinDigits(updatedPinDigits);
 
-        if (isViewCompleted) {
-          // Move to the next view
-          if (currentView < 2) {
-            setCurrentView(currentView + 1);
+      const isViewCompleted = updatedPinDigits
+        .slice(startIndex, startIndex + 4)
+        .every((d) => d !== "");
 
-            // Clear input for the current view
-            for (let i = startIndex; i < startIndex + 4; i++) {
-              updatedPinDigits[i] = "";
-            }
-            setPinDigits(updatedPinDigits);
-          }
-        }
+      if (isViewCompleted && currentView < 2) {
+        setCurrentView(currentView + 1);
       }
     }
   };
 
+  // const handleDeletePress = () => {
+  //   // Function to handle delete button press from the NumberKeypad
+  //   const updatedPinDigits = [...pinDigits];
+  //   for (let i = updatedPinDigits.length - 1; i >= 0; i--) {
+  //     if (updatedPinDigits[i] !== "") {
+  //       updatedPinDigits[i] = "";
+  //       break;
+  //     }
+  //   }
+  //   setPinDigits(updatedPinDigits);
+
+  //   // Move back to the previous view when deleting in the first view
+  //   if (currentView > 0) {
+  //     setCurrentView(currentView - 1);
+  //   }
+  // };
+
   const handleDeletePress = () => {
-    // Function to handle delete button press from the NumberKeypad
     const updatedPinDigits = [...pinDigits];
+
     for (let i = updatedPinDigits.length - 1; i >= 0; i--) {
       if (updatedPinDigits[i] !== "") {
         updatedPinDigits[i] = "";
         break;
       }
     }
+
     setPinDigits(updatedPinDigits);
 
-    // Move back to the previous view when deleting in the first view
     if (currentView > 0) {
       setCurrentView(currentView - 1);
     }
@@ -130,15 +172,15 @@ const ActivateCardScreen = () => {
 
       <ScrollView showsVerticalScrollIndicator={false} className="mb-2">
         {/* Verve Card */}
-        <View className="flex-row items-center mx-6 mb-8">
-          <Image source={require("../../assets/images/cardS.png")} />
+        <View className="flex-row items-center mx-6">
+          <Verve width={40} height={40}/>
           <Text className="font-semibold text-lg ml-3">
             Verve Card 5677********9876
           </Text>
         </View>
 
         {/* Enter Card Pin */}
-        <View className="flex-col justify-center items-center mt-10">
+        <View className="flex-col justify-center items-center mt-6">
           {/* View One */}
           {currentView === 0 && (
             <View>

@@ -8,6 +8,7 @@ import {
 import NumberKeypad from "../components/keypad";
 import { useNavigation } from "@react-navigation/native";
 import SvgUri from "react-native-svg-uri";
+import Verve from "../../assets/icons/verve.svg";
 
 const ChangePinScreen = () => {
   const navigation = useNavigation();
@@ -130,15 +131,15 @@ const ChangePinScreen = () => {
 
       <ScrollView showsVerticalScrollIndicator={false} className="mb-2">
         {/* Verve Card */}
-        <View className="flex-row items-center mx-6 mb-8">
-          <Image source={require("../../assets/images/cardS.png")} />
+        <View className="flex-row items-center mx-6">
+          <Verve width={40} height={40} />
           <Text className="font-semibold text-lg ml-3">
             Verve Card 5677********9876
           </Text>
         </View>
 
         {/* Enter Card Pin */}
-        <View className="flex-col justify-center items-center mt-10">
+        <View className="flex-col justify-center items-center mt-6">
           {/* View One */}
           {currentView === 0 && (
             <View>

@@ -35,6 +35,8 @@ const data: Item[] = [
 
 interface RenderItemProps {
   item: Item;
+  showDetails: boolean;
+  showCard: boolean
 }
 
 const renderItem = ({ item }: RenderItemProps) => {
@@ -45,9 +47,17 @@ const renderItem = ({ item }: RenderItemProps) => {
   );
 };
 
-const CardComponent = () => {
+const CardComponent = ({ showDetails, showCard }: RenderItemProps) => {
   const [index, setIndex] = useState(0);
   const isCarousel = useRef<Carousel<Item> | null>(null);
+
+  const renderItem = ({ item }: RenderItemProps) => {
+    return (
+      <View>
+        <Image source={showDetails ? require("../../assets/images/cardD.png") : showCard ? require("../../assets/images/cardL.png") : item.localPath} />
+      </View>
+    );
+  };
 
   return (
     <View style={{ paddingTop: 20, alignItems: "center" }}>
