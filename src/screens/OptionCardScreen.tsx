@@ -57,15 +57,10 @@ const OptionsCardScreen = () => {
 
   const styles = {
     line: {
-      borderWidth: 0.2, // Height of the line
-      backgroundColor: "#ccd6eb", // Replace with your Tailwind CSS color class
+      borderWidth: 0.7, // Height of the line
+      borderColor: "#ccd6eb", // Replace with your Tailwind CSS color class
       marginVertical: 10, // Adjust as needed
-    },
-    lines: {
-      borderWidth: 0.2, // Height of the line
-      backgroundColor: "#ccd6eb", // Replace with your Tailwind CSS color class
-      marginVertical: 10, // Adjust as needed
-    },
+    }
   };
 
   return (
@@ -212,7 +207,7 @@ const OptionsCardScreen = () => {
                 />
               </View>
             </View>
-            <View style={styles.lines} />
+            <View style={styles.line} />
 
             {/* POS */}
             <View className="flex-row justify-between items-center">

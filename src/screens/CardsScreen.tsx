@@ -14,7 +14,6 @@ import {
 } from "react-native-heroicons/outline";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CardComponent from "../components/card";
-import SvgUri from "react-native-svg-uri";
 import Eye from "../../assets/icons/eye.svg";
 import Eyee from "../../assets/icons/eyee.svg";
 import Lock from "../../assets/icons/lock.svg";
@@ -63,6 +62,12 @@ const CardsScreen: React.FC = () => {
     const Lockk = lock === "lock" ? "anotherIcon" : "lock";
     setLock(Lockk);
   };
+
+  const Line = {
+    borderColor: "#CCD6EB",
+    borderWidth: 0.6,
+    marginBottom: 6,
+  };
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: "#E6EBF5" }}>
       <StatusBar style="dark" />
@@ -82,16 +87,23 @@ const CardsScreen: React.FC = () => {
         </View>
 
         {/* Card Carousel */}
-        <CardComponent showDetails={showDetails} showCard={showCard} />
+        <CardComponent
+          showDetails={showDetails}
+          showCard={showCard}
+        />
 
         {/* Card Icons */}
-        <View className="flex-row justify-between items-center mx-10 mb-8">
+        <View className="flex-row justify-between items-center mx-10 mb-6">
           <View className="flex-col items-center">
-            <TouchableOpacity disabled={showCard} onPress={toggleShowDetails} className="mb-2">
+            <TouchableOpacity
+              disabled={showCard}
+              onPress={toggleShowDetails}
+              className="mb-2"
+            >
               {see === "eye" ? (
-                <Eyee width={70} height={70} />
+                <Eyee width={55} height={55} />
               ) : (
-                <Eye width={70} height={70} />
+                <Eye width={55} height={55} />
               )}
             </TouchableOpacity>
             <Text>Show Details</Text>
@@ -100,9 +112,9 @@ const CardsScreen: React.FC = () => {
           <View className="flex-col items-center">
             <TouchableOpacity onPress={lockCard} className="mb-2">
               {lock === "lock" ? (
-                <Lock width={70} height={70} />
+                <Lock width={55} height={55} />
               ) : (
-                <Lockk width={70} height={70} />
+                <Lockk width={55} height={55} />
               )}
             </TouchableOpacity>
             <Text>Lock</Text>
@@ -113,57 +125,69 @@ const CardsScreen: React.FC = () => {
               className="mb-2"
               onPress={() => navigation.navigate("Option")}
             >
-              <Option width={70} height={70} />
+              <Option width={55} height={55} />
             </TouchableOpacity>
             <Text>Options</Text>
           </View>
         </View>
 
         {/* Options */}
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView className="mb-4" showsVerticalScrollIndicator={false}>
           <TouchableOpacity
-            className="flex-row items-center mx-10 mb-5"
+            className="flex-row items-center mx-6 mb-5 p-2"
             onPress={request}
           >
             <Card width={30} height={30} />
             <View className="flex-col ml-4">
-              <Text className="text-lg font-bold">Request New Card</Text>
-              <Text>Pick up or get a new card delivered to you!</Text>
+              <Text className="text-sm font-bold">Request New Card</Text>
+              <Text className="text-xs">
+                Pick up or get a new card delivered to you!
+              </Text>
             </View>
           </TouchableOpacity>
 
+          <View style={Line}></View>
+
           <TouchableOpacity
-            className="flex-row items-center mx-10 mb-5"
+            className="flex-row items-center mx-6 mb-5 p-2"
             onPress={activate}
           >
             <Activate width={30} height={30} />
             <View className="flex-col ml-4">
-              <Text className="text-lg font-bold">Activate Card</Text>
-              <Text>Ready to start using your new card? click here</Text>
+              <Text className="text-sm font-bold">Activate Card</Text>
+              <Text className="text-xs">
+                Ready to start using your new card? click here
+              </Text>
             </View>
           </TouchableOpacity>
 
+          <View style={Line}></View>
+
           <TouchableOpacity
-            className="flex-row items-center mx-10 mb-5"
+            className="flex-row items-center mx-6 mb-5 p-2"
             onPress={change}
           >
             <Change width={30} height={30} />
             <View className="flex-col ml-4">
-              <Text className="text-lg font-bold">Change Pin</Text>
-              <Text>Change your pin in simple steps!</Text>
+              <Text className="text-sm font-bold">Change Pin</Text>
+              <Text className="text-xs">Change your pin in simple steps!</Text>
             </View>
           </TouchableOpacity>
 
+          <View style={Line}></View>
+
           <TouchableOpacity
-            className="flex-row items-center mx-10 mb-5"
+            className="flex-row items-center mx-6 mb-5 p-2"
             onPress={() => navigation.navigate("Support")}
           >
             <Support width={30} height={30} />
             <View className="flex-col ml-4">
-              <Text className="text-lg font-bold">Support</Text>
-              <Text>Report a card issue</Text>
+              <Text className="text-sm font-bold">Support</Text>
+              <Text className="text-xs">Report a card issue</Text>
             </View>
           </TouchableOpacity>
+
+          <View style={Line}></View>
         </ScrollView>
       </View>
     </SafeAreaView>

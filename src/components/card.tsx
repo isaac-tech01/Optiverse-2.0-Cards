@@ -39,13 +39,13 @@ interface RenderItemProps {
   showCard: boolean
 }
 
-const renderItem = ({ item }: RenderItemProps) => {
-  return (
-    <View>
-      <Image source={item.localPath} />
-    </View>
-  );
-};
+// const renderItem = ({ item }: RenderItemProps) => {
+//   return (
+//     <View>
+//       <Image source={item.localPath} />
+//     </View>
+//   );
+// };
 
 const CardComponent = ({ showDetails, showCard }: RenderItemProps) => {
   const [index, setIndex] = useState(0);
@@ -60,7 +60,7 @@ const CardComponent = ({ showDetails, showCard }: RenderItemProps) => {
   };
 
   return (
-    <View style={{ paddingTop: 20, alignItems: "center" }}>
+    <View style={{ paddingTop: 10, alignItems: "center" }}>
       <Carousel
         ref={isCarousel}
         data={data}

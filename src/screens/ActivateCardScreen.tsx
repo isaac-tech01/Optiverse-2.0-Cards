@@ -7,7 +7,6 @@ import {
 } from "react-native-heroicons/outline";
 import NumberKeypad from "../components/keypad";
 import { useNavigation } from "@react-navigation/native";
-import SvgUri from "react-native-svg-uri";
 import Verve from "../../assets/icons/verve.svg"
 
 const ActivateCardScreen = () => {
