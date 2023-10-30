@@ -5,10 +5,10 @@ import {
   ChevronLeftIcon,
   CreditCardIcon,
 } from "react-native-heroicons/outline";
-import NumberKeypad from "../components/keypad";
+import NumberKeypad from "../../components/keypad";
 import { useNavigation } from "@react-navigation/native";
 import SvgUri from "react-native-svg-uri";
-import Verve from "../../assets/icons/verve.svg";
+import Verve from "../../../assets/icons/verve.svg";
 
 const ChangePinScreen = () => {
   const navigation = useNavigation();
@@ -120,11 +120,13 @@ const ChangePinScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#E6EBF5" }}>
       {/* Top Bar */}
-      <View className="flex-row items-center mx-4 mb-8">
+      <View className="flex flex-col px-2 ml-2 mt-1">
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <ChevronLeftIcon size={30} strokeWidth={4} color={"#000A1F"} />
+          <ChevronLeftIcon size={28} strokeWidth={2} color={"#00297A"} />
         </TouchableOpacity>
-        <Text style={{ marginLeft: 16, fontSize: 20, fontWeight: "bold" }}>
+      </View>
+      <View className="ml-4 px-2 mb-4">
+        <Text className="text-2xl font-semibold" style={{ color: "#00297A" }}>
           Change Pin
         </Text>
       </View>

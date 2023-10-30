@@ -60,17 +60,21 @@ const OptionsCardScreen = () => {
       borderWidth: 0.8, // Height of the line
       borderColor: "#ccd6eb", // Replace with your Tailwind CSS color class
       marginVertical: 10, // Adjust as needed
-    }
+    },
   };
 
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: "#e6ebf5" }}>
       {/* Top Bar*/}
-      <View className="my-2 mx-4 mb-4 flex-row items-center">
+      <View className="flex flex-col px-2 ml-2 mt-1">
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <ChevronLeftIcon size={30} strokeWidth={4} color={"#000A1F"} />
+          <ChevronLeftIcon size={28} strokeWidth={2} color={"#00297A"} />
         </TouchableOpacity>
-        <Text className="ml-4 text-2xl font-bold">Card Options</Text>
+      </View>
+      <View className="ml-4 px-2 mb-4">
+        <Text className="text-2xl font-semibold" style={{ color: "#00297A" }}>
+          Card Options
+        </Text>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} className="mx-4">

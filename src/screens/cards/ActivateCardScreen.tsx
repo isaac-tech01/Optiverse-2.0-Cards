@@ -5,9 +5,9 @@ import {
   ChevronLeftIcon,
   CreditCardIcon,
 } from "react-native-heroicons/outline";
-import NumberKeypad from "../components/keypad";
+import NumberKeypad from "../../components/keypad";
 import { useNavigation } from "@react-navigation/native";
-import Verve from "../../assets/icons/verve.svg"
+import Verve from "../../../assets/icons/verve.svg";
 
 const ActivateCardScreen = () => {
   const navigation = useNavigation();
@@ -103,7 +103,7 @@ const ActivateCardScreen = () => {
     if (currentView >= 0 && currentView <= 2) {
       const updatedPinDigits = [...pinDigits];
       const startIndex = currentView * 4;
-      
+
       for (let i = startIndex; i < startIndex + 4; i++) {
         if (updatedPinDigits[i] === "") {
           updatedPinDigits[i] = digit;
@@ -160,11 +160,13 @@ const ActivateCardScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#E6EBF5" }}>
       {/* Top Bar */}
-      <View className="flex-row items-center mx-4 mb-8">
+      <View className="flex flex-col px-2 ml-2 mt-1">
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <ChevronLeftIcon size={30} strokeWidth={4} color={"#000A1F"} />
+          <ChevronLeftIcon size={28} strokeWidth={2} color={"#00297A"} />
         </TouchableOpacity>
-        <Text style={{ marginLeft: 16, fontSize: 20, fontWeight: "bold" }}>
+      </View>
+      <View className="ml-4 px-2 mb-4">
+        <Text className="text-2xl font-semibold" style={{ color: "#00297A" }}>
           Activate Card
         </Text>
       </View>
@@ -172,7 +174,7 @@ const ActivateCardScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false} className="mb-2">
         {/* Verve Card */}
         <View className="flex-row items-center mx-6">
-          <Verve width={40} height={40}/>
+          <Verve width={40} height={40} />
           <Text className="font-semibold text-lg ml-3">
             Verve Card 5677********9876
           </Text>

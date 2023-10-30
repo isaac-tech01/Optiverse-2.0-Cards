@@ -11,13 +11,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { Modal, Portal, PaperProvider } from "react-native-paper";
-import MyModal from "../components/modal";
-import DeliveryComponent from "../components/delivery";
-import { nigeriaStates } from "../constants/nigeria-states";
-import { localGovernments } from "../constants/local-government";
-import StateModal from "../components/stateModal";
-import LGAModal from "../components/lgaModal";
-import Dot from "../../assets/icons/dot.svg"
+import MyModal from "../../components/modal";
+import DeliveryComponent from "../../components/delivery";
+import { nigeriaStates } from "../../constants/nigeria-states";
+import { localGovernments } from "../../constants/local-government";
+import StateModal from "../../components/stateModal";
+import LGAModal from "../../components/lgaModal";
+import Dot from "../../../assets/icons/dot.svg";
 
 const RequestCardScreen = () => {
   const navigation = useNavigation();
@@ -166,18 +166,13 @@ const RequestCardScreen = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#E6EBF5" }}>
       <PaperProvider>
         {/* Top Bar */}
-        <View
-          style={{
-            margin: 16,
-            marginBottom: 8,
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
+        <View className="flex flex-col px-2 ml-2 mt-1">
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <ChevronLeftIcon size={30} strokeWidth={4} color={"#000A1F"} />
+            <ChevronLeftIcon size={28} strokeWidth={2} color={"#00297A"} />
           </TouchableOpacity>
-          <Text style={{ marginLeft: 16, fontSize: 20, fontWeight: "bold" }}>
+        </View>
+        <View className="ml-4 px-2 mb-4">
+          <Text className="text-2xl font-semibold" style={{ color: "#00297A" }}>
             Request Card
           </Text>
         </View>
@@ -238,10 +233,7 @@ const RequestCardScreen = () => {
                     ) : (
                       <Text>{modal.title}</Text>
                     )}
-                    <Dot
-                      width="30"
-                      height="30"
-                    />
+                    <Dot width="30" height="30" />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -304,10 +296,7 @@ const RequestCardScreen = () => {
                     ) : (
                       <Text>{modal5.title}</Text>
                     )}
-                    <Dot
-                      width="30"
-                      height="30"
-                    />
+                    <Dot width="30" height="30" />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -365,10 +354,7 @@ const RequestCardScreen = () => {
                         style={containerStyle}
                       >
                         <Text>{selectedState || "Select State"}</Text>
-                        <Dot
-                          width="30"
-                          height="30"
-                        />
+                        <Dot width="30" height="30" />
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -383,21 +369,22 @@ const RequestCardScreen = () => {
                         style={containerStyle}
                       >
                         <Text>{selectedLga || "Select LGA"}</Text>
-                        <Dot
-                          width="30"
-                          height="30"
-                        />
+                        <Dot width="30" height="30" />
                       </TouchableOpacity>
                     </View>
                   </View>
 
                   <View className="mb-6 flex-row justify-between items-center">
-                    <Text style={{color: "#999999"}} className="text-xs">Delivery Fee</Text>
+                    <Text style={{ color: "#999999" }} className="text-xs">
+                      Delivery Fee
+                    </Text>
                     <Text className="text-xs">0</Text>
                   </View>
 
                   <View className="flex-row justify-between items-center">
-                    <Text style={{color: "#999999"}} className="text-xs">VAT</Text>
+                    <Text style={{ color: "#999999" }} className="text-xs">
+                      VAT
+                    </Text>
                     <Text className="text-xs">0</Text>
                   </View>
                 </View>

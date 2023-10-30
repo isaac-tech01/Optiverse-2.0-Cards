@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
-import Accordion from "../components/accordian";
+import Accordion from "../../components/accordian";
 import ImagePicker, { launchImageLibrary } from "react-native-image-picker";
 import SvgUri from "react-native-svg-uri";
 import { PaperClipIcon } from "react-native-heroicons/solid";
@@ -64,11 +64,15 @@ const SupportCardScreen: React.FC = () => {
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: "#E6EBF5" }}>
       {/* Top Bar*/}
-      <View className="mx-4 my-2 mb-4 flex-row items-center">
+      <View className="flex flex-col px-2 ml-2 mt-1">
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <ChevronLeftIcon size={30} strokeWidth={4} color={"#000A1F"} />
+          <ChevronLeftIcon size={28} strokeWidth={2} color={"#00297A"} />
         </TouchableOpacity>
-        <Text className="ml-4 text-2xl font-bold">Support</Text>
+      </View>
+      <View className="ml-4 px-2 mb-4">
+        <Text className="text-2xl font-semibold" style={{ color: "#00297A" }}>
+          Support
+        </Text>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} className="mb-2">
