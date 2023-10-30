@@ -12,12 +12,12 @@ import { ChevronLeftIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { Modal, Portal, PaperProvider } from "react-native-paper";
 import MyModal from "../components/modal";
-import SvgUri from "react-native-svg-uri";
 import DeliveryComponent from "../components/delivery";
 import { nigeriaStates } from "../constants/nigeria-states";
 import { localGovernments } from "../constants/local-government";
 import StateModal from "../components/stateModal";
 import LGAModal from "../components/lgaModal";
+import Dot from "../../assets/icons/dot.svg"
 
 const RequestCardScreen = () => {
   const navigation = useNavigation();
@@ -238,10 +238,9 @@ const RequestCardScreen = () => {
                     ) : (
                       <Text>{modal.title}</Text>
                     )}
-                    <SvgUri
+                    <Dot
                       width="30"
                       height="30"
-                      source={require("../../assets/icons/dot.svg")}
                     />
                   </TouchableOpacity>
                 </View>
@@ -305,10 +304,9 @@ const RequestCardScreen = () => {
                     ) : (
                       <Text>{modal5.title}</Text>
                     )}
-                    <SvgUri
+                    <Dot
                       width="30"
                       height="30"
-                      source={require("../../assets/icons/dot.svg")}
                     />
                   </TouchableOpacity>
                 </View>
@@ -367,10 +365,9 @@ const RequestCardScreen = () => {
                         style={containerStyle}
                       >
                         <Text>{selectedState || "Select State"}</Text>
-                        <SvgUri
+                        <Dot
                           width="30"
                           height="30"
-                          source={require("../../assets/icons/dot.svg")}
                         />
                       </TouchableOpacity>
                     </View>
@@ -386,10 +383,9 @@ const RequestCardScreen = () => {
                         style={containerStyle}
                       >
                         <Text>{selectedLga || "Select LGA"}</Text>
-                        <SvgUri
+                        <Dot
                           width="30"
                           height="30"
-                          source={require("../../assets/icons/dot.svg")}
                         />
                       </TouchableOpacity>
                     </View>

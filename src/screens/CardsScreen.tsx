@@ -68,6 +68,7 @@ const CardsScreen: React.FC = () => {
     borderWidth: 0.6,
     marginBottom: 6,
   };
+
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: "#E6EBF5" }}>
       <StatusBar style="dark" />
@@ -77,7 +78,7 @@ const CardsScreen: React.FC = () => {
           style={{
             marginLeft: 4,
             marginTop: 2,
-            marginBottom: 2,
+            marginBottom: 20,
             flexDirection: "row",
             alignItems: "center",
           }}
@@ -87,13 +88,10 @@ const CardsScreen: React.FC = () => {
         </View>
 
         {/* Card Carousel */}
-        <CardComponent
-          showDetails={showDetails}
-          showCard={showCard}
-        />
+        <CardComponent showDetails={showDetails} showCard={showCard} />
 
         {/* Card Icons */}
-        <View className="flex-row justify-between items-center mx-10 mb-6">
+        <View className="flex-row justify-between items-center mx-10 mb-8">
           <View className="flex-col items-center">
             <TouchableOpacity
               disabled={showCard}
@@ -134,7 +132,7 @@ const CardsScreen: React.FC = () => {
         {/* Options */}
         <ScrollView className="mb-4" showsVerticalScrollIndicator={false}>
           <TouchableOpacity
-            className="flex-row items-center mx-6 mb-5 p-2"
+            className="flex-row items-center mx-6 mb-5 px-2 py-3 rounded-xl bg-white"
             onPress={request}
           >
             <Card width={30} height={30} />
@@ -146,10 +144,9 @@ const CardsScreen: React.FC = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={Line}></View>
 
           <TouchableOpacity
-            className="flex-row items-center mx-6 mb-5 p-2"
+            className="flex-row items-center mx-6 mb-5 px-2 py-3 rounded-xl bg-white"
             onPress={activate}
           >
             <Activate width={30} height={30} />
@@ -161,10 +158,9 @@ const CardsScreen: React.FC = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={Line}></View>
 
           <TouchableOpacity
-            className="flex-row items-center mx-6 mb-5 p-2"
+            className="flex-row items-center mx-6 mb-5 px-2 py-3 rounded-xl bg-white"
             onPress={change}
           >
             <Change width={30} height={30} />
@@ -174,10 +170,9 @@ const CardsScreen: React.FC = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={Line}></View>
 
           <TouchableOpacity
-            className="flex-row items-center mx-6 mb-5 p-2"
+            className="flex-row items-center mx-6 mb-5 px-2 py-3 rounded-xl bg-white"
             onPress={() => navigation.navigate("Support")}
           >
             <Support width={30} height={30} />
@@ -187,7 +182,6 @@ const CardsScreen: React.FC = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={Line}></View>
         </ScrollView>
       </View>
     </SafeAreaView>

@@ -57,7 +57,7 @@ const OptionsCardScreen = () => {
 
   const styles = {
     line: {
-      borderWidth: 0.7, // Height of the line
+      borderWidth: 0.8, // Height of the line
       borderColor: "#ccd6eb", // Replace with your Tailwind CSS color class
       marginVertical: 10, // Adjust as needed
     }
